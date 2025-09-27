@@ -1,0 +1,23 @@
+version: '3.8'
+
+
+
+services:
+  gateway_service:
+    build: ./gateway_service
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./gateway_service:/app
+    ports:
+      - "8000:8000"
+  
+  user_service:
+    build: ./user_service
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./user_service:/app
+    # ports:
+    #   - "8001:8000"
+  redis:
+    image: redis:7-alpine
+    restart: always
