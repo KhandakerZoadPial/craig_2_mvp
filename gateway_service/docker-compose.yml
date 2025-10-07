@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  gateway_service:
+    build: .
+    #container_name: gateway_service
+    command: gunicorn src.wsgi:application --bind 0.0.0.0:8000 --workers 4
+    volumes:
+      - .:/app
+    # ports:
+    #   - "8000:8000"
+    networks:
+      - microservices_shared_network
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis_container
+    restart: always
+    networks:
+      - microservices_shared_network
+  
+  
+  nginx:
+    image: nginx:1.25-alpine
+    container_name: external_load_balancer
+    ports:
+      - "8000:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - microservices_shared_network
+    depends_on:
+      - gateway_service
+
+networks:
+  microservices_shared_network:
+    external: true

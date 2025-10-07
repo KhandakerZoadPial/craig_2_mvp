@@ -1,7 +1,8 @@
 from django.http import HttpResponse, JsonResponse
 from django.core.cache import cache
 import requests
-from rest_framework.response import Response
+from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
 
 
 def get_client_ip(request):
@@ -14,16 +15,15 @@ def get_client_ip(request):
     return ip
 
 
-SERVICE_MAP = {
-    "user_service": "http://user_service:8000",
-}
+SERVICE_MAP = settings.SERVICE_MAP
 
 
+@csrf_exempt
 def dynamic_proxy_handler(request, service_name, service_path):
     ip = get_client_ip(request)
     rate_limit_key = f"rate_limit:{ip}"
     
-    RATE_LIMIT = 10
+    RATE_LIMIT = settings.RATE_LIMIT
     TIMEOUT = 60
 
     request_count = cache.get(rate_limit_key, 0)
@@ -33,6 +33,7 @@ def dynamic_proxy_handler(request, service_name, service_path):
 
     cache.set(rate_limit_key, request_count + 1, timeout=TIMEOUT)
 
+    print(SERVICE_MAP)
     if service_name not in SERVICE_MAP:
         return JsonResponse({"error": "Service not found"}, status=404)
     

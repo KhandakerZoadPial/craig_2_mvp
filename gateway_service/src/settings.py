@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-gqa)5ahfsvbf2g7ty3)i3pjv0r&3=+4_pvbxwxo&=&e=ob0ln6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -133,3 +133,12 @@ CACHES = {
         }
     }
 }
+
+
+# env related stuff
+import json
+from decouple import config
+
+DEBUG = config('DEBUG', default=False, cast=bool)
+SERVICE_MAP = json.loads(config('SERVICE_MAP', default='{}'))
+RATE_LIMIT = int(config('RATE_LIMIT', 5))
