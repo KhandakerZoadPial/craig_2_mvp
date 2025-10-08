@@ -7,7 +7,8 @@ This project follows a **microservices architecture**.
 
 | Service Name      | Description       | Technology Stack              |
 |--------------------|------------------|-------------------------------|
-| 🛡️ Gateway Service | Handles routing and authentication | Python / Django |
-| 👤 User Service    | Manages users and authentication data | Python / Django |
-| 🛍️ Product Service | Handles product-related operations | Python / Django |
-| 📦 Inventory Service | Manages stock and inventory data | JavaScript / Node.js (Express) |
+| 🛡️ Gateway Service | Handles routing and rate limiting | Python / Django |
+| 👤 User Service    | Manages authentication and user data | Python / Django |
+| 🛍️ Product Service | Handles product-related operations(CRUD) | Python / Django |
+| 📦 Inventory Service | Manages stock and inventory data(CRUD) | JavaScript / Node.js (Express) |
+
