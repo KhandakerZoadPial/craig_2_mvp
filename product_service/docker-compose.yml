@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  product_service_lb:
+    image: nginx:1.25-alpine
+    container_name: product_service_lb
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - microservices_shared_network
+    depends_on:
+      - product_service
+
+  product_service:
+    build: .
+    command: gunicorn src.wsgi:application --bind 0.0.0.0:8000 --workers 4
+    volumes:
+      - .:/app
+    networks:
+      - microservices_shared_network
+    depends_on:
+      - mysql_db
+
+  mysql_db:
+    image: mysql:8.0
+    container_name: product_service_mysql_container
+    hostname: product_service_mysql_db
+    volumes:
+      - mysql_db_data:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=product_service_db
+      - MYSQL_USER=product_service_user
+      - MYSQL_PASSWORD=a_strong_password
+      - MYSQL_ROOT_PASSWORD=a_very_strong_root_password
+    networks:
+      - microservices_shared_network
+
+networks:
+  microservices_shared_network:
+    external: true
+
+volumes:
+  mysql_db_data:

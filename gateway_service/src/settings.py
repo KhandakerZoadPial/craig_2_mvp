@@ -9,8 +9,13 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
 from pathlib import Path
+import json
+from decouple import config
+DEBUG = config('DEBUG', default=False, cast=bool)
+SERVICE_MAP = json.loads(config('SERVICE_MAP', default='{}'))
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -117,17 +122,17 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
+
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-# redis setup
+# Redis Caching Setup
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://redis:6379/1",
+        "LOCATION": SERVICE_MAP['caching_service'],
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
@@ -135,10 +140,11 @@ CACHES = {
 }
 
 
-# env related stuff
-import json
-from decouple import config
 
-DEBUG = config('DEBUG', default=False, cast=bool)
-SERVICE_MAP = json.loads(config('SERVICE_MAP', default='{}'))
-RATE_LIMIT = int(config('RATE_LIMIT', 5))
+# Loading Rate Limit From Json File
+CONFIG_FILE_PATH = BASE_DIR / 'config.json'
+with open(CONFIG_FILE_PATH, 'r') as config_file:
+    config_data = json.load(config_file)
+RATE_LIMIT_CONFIG = config_data.get("rate_limit", {})
+RATE_LIMIT = RATE_LIMIT_CONFIG.get("requests", 5)
+RATE_LIMIT_TIMEOUT = RATE_LIMIT_CONFIG.get("timeout_seconds", 60)

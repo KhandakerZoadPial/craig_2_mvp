@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: caching_service
+    ports:
+      - "6379:6379"
+    restart: always
+    networks:
+      - microservices_shared_network
+
+networks:
+  microservices_shared_network:
+    external: true

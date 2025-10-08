@@ -68,9 +68,12 @@ def login(request):
         return Response(response, status=status.HTTP_401_UNAUTHORIZED)
 
     refresh = RefreshToken.for_user(user)
+    access_token = refresh.access_token
+    access_token['username'] = user.username
+    access_token['email'] = user.email
 
 
-    response = generate_response("success", 200, {'refresh_token': str(refresh),  'access_token': str(refresh.access_token)})
+    response = generate_response("success", 200, {'refresh_token': str(refresh),  'access_token': str(access_token)})
 
     print('I am hitted')
     return Response(response, status=200)

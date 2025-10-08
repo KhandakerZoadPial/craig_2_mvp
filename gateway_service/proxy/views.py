@@ -24,7 +24,7 @@ def dynamic_proxy_handler(request, service_name, service_path):
     rate_limit_key = f"rate_limit:{ip}"
     
     RATE_LIMIT = settings.RATE_LIMIT
-    TIMEOUT = 60
+    TIMEOUT = settings.RATE_LIMIT_TIMEOUT
 
     request_count = cache.get(rate_limit_key, 0)
     

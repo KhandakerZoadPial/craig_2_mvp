@@ -38,11 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-
-    'authentication',
-
     'rest_framework_simplejwt',
-    'rest_framework'
+    'rest_framework',
+    'products'
 ]
 
 MIDDLEWARE = [
@@ -144,19 +142,15 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-
-# jwt related
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
-}
-
-from datetime import timedelta
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': (
+#         'rest_framework_simplejwt.authentication.JWTAuthentication',
+#     )
+# }
 
 SIMPLE_JWT = {
     'ALGORITHM': 'HS256',
     'SIGNING_KEY': config('JWT_SIGNING_KEY'),
-    'ACCESS_TOKEN_LIFETIME': timedelta(days=10), 
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=20), 
+    # 'USER_ID_FIELD': 'id', # The field on the Django User model
+    # 'USER_ID_CLAIM': 'user_id', # The name of the claim in the JWT
 }

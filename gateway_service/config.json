@@ -1,0 +1,12 @@
+{
+    "rate_limit": {
+        "requests": 4,
+        "timeout_seconds": 60
+    },
+    "SERVICE_MAP": {
+        "user_service": "http://user_service:8000", 
+        "caching_service": "redis://caching_service:6379/1", 
+        "product_service": "http://product_service:8000"
+    }
+    
+}
