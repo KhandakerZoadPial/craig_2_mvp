@@ -6,7 +6,8 @@
     "SERVICE_MAP": {
         "user_service": "http://user_service:8000", 
         "caching_service": "redis://caching_service:6379/1", 
-        "product_service": "http://product_service:8000"
+        "product_service": "http://product_service:8000",
+        "inventory_service": "http://inventory_service:8000"
     }
     
 }

@@ -1,0 +1,43 @@
+services:
+  inventory_service_lb:
+    image: nginx:1.25-alpine
+    container_name: inventory_service_lb
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - microservices_shared_network
+    depends_on:
+      - inventory_service
+
+  inventory_service:
+    build: .
+    command: node index.js
+    volumes:
+      - .:/app
+    environment:
+      - PORT=${PORT}
+      - JWT_SIGNING_KEY=${JWT_SIGNING_KEY}
+      - MONGO_URI=${MONGO_URI}
+    networks:
+      - microservices_shared_network
+    depends_on:
+      - mongo_db
+
+  mongo_db:
+    image: mongo:latest
+    container_name: inventory_mongo_container
+    hostname: mongo_db 
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=inventory_user
+      - MONGO_INITDB_ROOT_PASSWORD=a_strong_password
+    networks:
+      - microservices_shared_network
+
+networks:
+  microservices_shared_network:
+    external: true
+
+volumes:
+  mongo_data:

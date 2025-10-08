@@ -13,7 +13,7 @@ from pathlib import Path
 import json
 from decouple import config
 DEBUG = config('DEBUG', default=False, cast=bool)
-SERVICE_MAP = json.loads(config('SERVICE_MAP', default='{}'))
+
 
 
 
@@ -128,16 +128,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-# Redis Caching Setup
-CACHES = {
-    "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": SERVICE_MAP['caching_service'],
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-        }
-    }
-}
+
 
 
 
@@ -148,3 +139,16 @@ with open(CONFIG_FILE_PATH, 'r') as config_file:
 RATE_LIMIT_CONFIG = config_data.get("rate_limit", {})
 RATE_LIMIT = RATE_LIMIT_CONFIG.get("requests", 5)
 RATE_LIMIT_TIMEOUT = RATE_LIMIT_CONFIG.get("timeout_seconds", 60)
+SERVICE_MAP = config_data.get("SERVICE_MAP", {})
+
+
+# Redis Caching Setup
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": SERVICE_MAP['caching_service'],
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
