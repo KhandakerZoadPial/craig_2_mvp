@@ -1,0 +1,573 @@
+{
+	"info": {
+		"_postman_id": "0981f61e-1aa7-4d41-92e2-b5d83ee9d573",
+		"name": "Craig MS Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12976487",
+		"_collection_link": "https://ai-ninjas.postman.co/workspace/AI-Ninjas-Workspace~cebfad13-ebde-472f-8964-eef059be8288/collection/12976487-0981f61e-1aa7-4d41-92e2-b5d83ee9d573?action=share&source=collection_link&creator=12976487"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test@test.com\",\r\n    \"password\": \"helloworld\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/user_service/login/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user_service",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Add Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYwNzY1MTAwLCJpYXQiOjE3NTk5MDExMDAsImp0aSI6IjU3Nzg5OTgyMzRlMjQ2ZjRhN2M4Y2ExNWFmNWI0NzRmIiwidXNlcl9pZCI6IjEiLCJ1c2VybmFtZSI6InRlc3RAdGVzdC5jb20iLCJlbWFpbCI6InRlc3RAdGVzdC5jb20ifQ.NF6o3cVAOs2MaAB3Qtc-WlZCWSnmSgEaXKlpwepweXI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Ergonomic Office Chair\",\r\n    \"description\": \"Provides excellent lumbar support.\",\r\n    \"price\": \"299.99\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/product_service/products/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"product_service",
+								"products",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Products",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYwNzY1MTAwLCJpYXQiOjE3NTk5MDExMDAsImp0aSI6IjU3Nzg5OTgyMzRlMjQ2ZjRhN2M4Y2ExNWFmNWI0NzRmIiwidXNlcl9pZCI6IjEiLCJ1c2VybmFtZSI6InRlc3RAdGVzdC5jb20iLCJlbWFpbCI6InRlc3RAdGVzdC5jb20ifQ.NF6o3cVAOs2MaAB3Qtc-WlZCWSnmSgEaXKlpwepweXI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/product_service/products/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"product_service",
+								"products",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Specific Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYwNzY1MTAwLCJpYXQiOjE3NTk5MDExMDAsImp0aSI6IjU3Nzg5OTgyMzRlMjQ2ZjRhN2M4Y2ExNWFmNWI0NzRmIiwidXNlcl9pZCI6IjEiLCJ1c2VybmFtZSI6InRlc3RAdGVzdC5jb20iLCJlbWFpbCI6InRlc3RAdGVzdC5jb20ifQ.NF6o3cVAOs2MaAB3Qtc-WlZCWSnmSgEaXKlpwepweXI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/product_service/products/2/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"product_service",
+								"products",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYwNzY1MTAwLCJpYXQiOjE3NTk5MDExMDAsImp0aSI6IjU3Nzg5OTgyMzRlMjQ2ZjRhN2M4Y2ExNWFmNWI0NzRmIiwidXNlcl9pZCI6IjEiLCJ1c2VybmFtZSI6InRlc3RAdGVzdC5jb20iLCJlbWFpbCI6InRlc3RAdGVzdC5jb20ifQ.NF6o3cVAOs2MaAB3Qtc-WlZCWSnmSgEaXKlpwepweXI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Premium Ergonomic Office Chair updated\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/product_service/products/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"product_service",
+								"products",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYwNzY1MTAwLCJpYXQiOjE3NTk5MDExMDAsImp0aSI6IjU3Nzg5OTgyMzRlMjQ2ZjRhN2M4Y2ExNWFmNWI0NzRmIiwidXNlcl9pZCI6IjEiLCJ1c2VybmFtZSI6InRlc3RAdGVzdC5jb20iLCJlbWFpbCI6InRlc3RAdGVzdC5jb20ifQ.NF6o3cVAOs2MaAB3Qtc-WlZCWSnmSgEaXKlpwepweXI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/product_service/products/2/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"product_service",
+								"products",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Inventory Service",
+			"item": [
+				{
+					"name": "Add Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYwNzY1MTAwLCJpYXQiOjE3NTk5MDExMDAsImp0aSI6IjU3Nzg5OTgyMzRlMjQ2ZjRhN2M4Y2ExNWFmNWI0NzRmIiwidXNlcl9pZCI6IjEiLCJ1c2VybmFtZSI6InRlc3RAdGVzdC5jb20iLCJlbWFpbCI6InRlc3RAdGVzdC5jb20ifQ.NF6o3cVAOs2MaAB3Qtc-WlZCWSnmSgEaXKlpwepweXI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Heavy Duty Wrench 2\",\r\n    \"quantity\": 500\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/inventory_service/items",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"inventory_service",
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYwNzY1MTAwLCJpYXQiOjE3NTk5MDExMDAsImp0aSI6IjU3Nzg5OTgyMzRlMjQ2ZjRhN2M4Y2ExNWFmNWI0NzRmIiwidXNlcl9pZCI6IjEiLCJ1c2VybmFtZSI6InRlc3RAdGVzdC5jb20iLCJlbWFpbCI6InRlc3RAdGVzdC5jb20ifQ.NF6o3cVAOs2MaAB3Qtc-WlZCWSnmSgEaXKlpwepweXI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/inventory_service/items/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"inventory_service",
+								"items",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYwNzY1MTAwLCJpYXQiOjE3NTk5MDExMDAsImp0aSI6IjU3Nzg5OTgyMzRlMjQ2ZjRhN2M4Y2ExNWFmNWI0NzRmIiwidXNlcl9pZCI6IjEiLCJ1c2VybmFtZSI6InRlc3RAdGVzdC5jb20iLCJlbWFpbCI6InRlc3RAdGVzdC5jb20ifQ.NF6o3cVAOs2MaAB3Qtc-WlZCWSnmSgEaXKlpwepweXI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Metric Socket Set\",\r\n    \"quantity\": 223\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/inventory_service/items/68e6084fae0cc7eac31a5e2c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"inventory_service",
+								"items",
+								"68e6084fae0cc7eac31a5e2c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYwNzY1MTAwLCJpYXQiOjE3NTk5MDExMDAsImp0aSI6IjU3Nzg5OTgyMzRlMjQ2ZjRhN2M4Y2ExNWFmNWI0NzRmIiwidXNlcl9pZCI6IjEiLCJ1c2VybmFtZSI6InRlc3RAdGVzdC5jb20iLCJlbWFpbCI6InRlc3RAdGVzdC5jb20ifQ.NF6o3cVAOs2MaAB3Qtc-WlZCWSnmSgEaXKlpwepweXI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/inventory_service/items/68e607b5ae0cc7eac31a5e29",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"inventory_service",
+								"items",
+								"68e607b5ae0cc7eac31a5e29"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Asset Service",
+			"item": [
+				{
+					"name": "Add Asset",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYwODUzODk3LCJpYXQiOjE3NTk5ODk4OTcsImp0aSI6IjczOTE1Y2RhOGQzNTQxZTA4ZjkxZDE0ZDJkZjA1YzgzIiwidXNlcl9pZCI6IjEiLCJ1c2VybmFtZSI6InRlc3RAdGVzdC5jb20iLCJlbWFpbCI6InRlc3RAdGVzdC5jb20ifQ.J04XRrzLWZdHE9zqfMsSIcgBfwP52lZrTXCv89GGweQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Go Pro Camera\",\r\n    \"type\": \"Electronics\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/asset_service/assets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"asset_service",
+								"assets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Asset",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYwODUzODk3LCJpYXQiOjE3NTk5ODk4OTcsImp0aSI6IjczOTE1Y2RhOGQzNTQxZTA4ZjkxZDE0ZDJkZjA1YzgzIiwidXNlcl9pZCI6IjEiLCJ1c2VybmFtZSI6InRlc3RAdGVzdC5jb20iLCJlbWFpbCI6InRlc3RAdGVzdC5jb20ifQ.J04XRrzLWZdHE9zqfMsSIcgBfwP52lZrTXCv89GGweQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/asset_service/assets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"asset_service",
+								"assets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Individual Asset",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYwODUzODk3LCJpYXQiOjE3NTk5ODk4OTcsImp0aSI6IjczOTE1Y2RhOGQzNTQxZTA4ZjkxZDE0ZDJkZjA1YzgzIiwidXNlcl9pZCI6IjEiLCJ1c2VybmFtZSI6InRlc3RAdGVzdC5jb20iLCJlbWFpbCI6InRlc3RAdGVzdC5jb20ifQ.J04XRrzLWZdHE9zqfMsSIcgBfwP52lZrTXCv89GGweQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/asset_service/assets/68e75c907fc436934d0b1d18",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"asset_service",
+								"assets",
+								"68e75c907fc436934d0b1d18"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Asset",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYwODUzODk3LCJpYXQiOjE3NTk5ODk4OTcsImp0aSI6IjczOTE1Y2RhOGQzNTQxZTA4ZjkxZDE0ZDJkZjA1YzgzIiwidXNlcl9pZCI6IjEiLCJ1c2VybmFtZSI6InRlc3RAdGVzdC5jb20iLCJlbWFpbCI6InRlc3RAdGVzdC5jb20ifQ.J04XRrzLWZdHE9zqfMsSIcgBfwP52lZrTXCv89GGweQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Go Pro Hero 12\",\r\n    \"type\": \"Action Camera\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/asset_service/assets/68e75c907fc436934d0b1d18",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"asset_service",
+								"assets",
+								"68e75c907fc436934d0b1d18"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Asset",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYwODUzODk3LCJpYXQiOjE3NTk5ODk4OTcsImp0aSI6IjczOTE1Y2RhOGQzNTQxZTA4ZjkxZDE0ZDJkZjA1YzgzIiwidXNlcl9pZCI6IjEiLCJ1c2VybmFtZSI6InRlc3RAdGVzdC5jb20iLCJlbWFpbCI6InRlc3RAdGVzdC5jb20ifQ.J04XRrzLWZdHE9zqfMsSIcgBfwP52lZrTXCv89GGweQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/asset_service/assets/68e75c907fc436934d0b1d18",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"asset_service",
+								"assets",
+								"68e75c907fc436934d0b1d18"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
